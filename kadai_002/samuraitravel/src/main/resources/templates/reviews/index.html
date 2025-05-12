@@ -37,7 +37,7 @@
 												<h5 class="card-title" th:text="${review.user.name}"></h5>
 												<span sec:authorize="isAuthenticated()"
 													th:if="${#authentication.principal.user.id == review.user.id}">
-													<a th:href="@{/houses/__${house.id}__/reviews/__${review.id}__edit}"
+													<a th:href="@{/houses/{houseId}/reviews/{reviewId}/edit(houseId=${house.id}, reviewId=${review.id})}"
 														class="me-2">編集</a>
 													<a href="#" class="samuraitravel-link-danger" data-bs-toggle="modal" th:data-bs-target="${'#deleteReviewModal' + review.id}">削除</a>
 													<!--削除用モーダル-->
@@ -54,7 +54,7 @@
 																		aria-label="閉じる"></button>
 																</div>
 																<div class="modal-footer">
-																	<form method="post"th:action="@{/houses/__${house.id}__/reviews/__${review.id}__/delete}">
+																	<form method="post"th:action="@{/houses/{houseId}/reviews/{reviewId}/delete(houseId=${house.id}, reviewId=${review.id})}">
 																		<button type="submit" class="btn samuraitravel-btn-danger text-white shadow-sm">削除</button>
 																	</form>
 																</div>
